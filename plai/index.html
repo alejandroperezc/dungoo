@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<meta charset="UTF-8"/>
+<title>Dungee</title>
+
+<nav>
+    <a href="/">Home</a>
+    <a href="start">Start new game</a>
+    <a href="play">Play an existing Dungee</a>    
+</nav>
+
+<h1>PLAY</h1>
+
+<input id="pinEl" placeholder="PIN"/>
+<input id="nomEl" placeholder="Your name"/>
+
+<button onclick="apuntarse()">PLAY</button>
+
+<script>
+    function apuntarse(){
+        fetch (`https://dungee-252d3-default-rtdb.europe-west1.firebasedatabase.app/pins/PIN${pinEl.value}/users.json`, {
+            method: 'POST',
+            body: `{"name": "${nomEl.value}" }`
+        })
+    }
+</script>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<meta charset="UTF-8"/>
+<title>Dungee</title>
+
+<nav>
+    <a href="/">Home</a>
+    <a href="start">Start new game</a>
+    <a href="play">Play an existing Dungee</a>    
+</nav>
+<h1>START</h1>
+<button onclick="generarPIN()">START</button>
+<button onclick="mostrarPreguntas()">TODO LISTO</button>
+
+<p id = "pinEl"></p>
+<p id = "playersEl"></p>
+
+
+
+<script>
+let pin;
+
+function generarPIN(){
+    pin = Math.floor(Math.random()*9000)+1000;
+    pinEl.innerText = pin;
+
+    setInterval(obtenerUsuarios, 10000);
+
+}
+
+function mostrarPreguntas(){
+
+    fetch(`https://`)
+
+}
+
+function obtenerUsuarios(){
+    fetch(`https://dungee-tano.vercel.app/api/damelosusers?pin=${pin}`)
+    .then(datos => datos.json())
+    .then(json => {
+        playersEl.innerText = "";
+        
+        for (const x in json.users){
+            playersEl.innerText += json.users[x].name;
+        }
+}
+</script>      
